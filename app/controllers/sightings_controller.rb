@@ -5,4 +5,9 @@ class SightingsController < ApplicationController
     render json: { id: sighting.id, bird: sighting.bird, location: sighting.location }
   end
   
+  def index
+    sightings = Sighting.all
+    render json: sightings, include: [:bird, :location]
+  end
+  
 end
